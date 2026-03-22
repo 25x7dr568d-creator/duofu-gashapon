@@ -648,7 +648,9 @@ function twist() {
   var places = getPlaces();
   if (places.length===0) return;
   currentPick = weightedRandom(places);
-  currentCharIndex = Math.floor(Math.random()*IMG.length);
+  var newIndex;
+  do { newIndex = Math.floor(Math.random()*IMG.length); } while (newIndex === currentCharIndex && IMG.length > 1);
+  currentCharIndex = newIndex;
   isAnimating = true;
 
   // Shake machine
